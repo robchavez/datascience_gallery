@@ -16,3 +16,17 @@ Below are links to the tutorials created for each topic covered in our course.
 ### [Network Analysis](html_only/network_analysis.html)
 ### [Package Creation](html_only/packages.html)
 ### [Website Building in R](html_only/websites.html)
+
+## New tutorials for 2026
+
+Below are the tutorials for this course from students in my class from Spring of 2026. Many of the same topics with lots of updates to keep up with changes over the past eight years. Here is the [updated syllabus](html_only/PSY607_datascience_syllabus_S26.html).
+
+
+### [General Programming in R](html_only/week2_general_programming.html)
+### [Custom Functions](html_only/week3_custom_functions.html)
+### [Data Wrangling](html_only/Week4_datawrangling_GN.html)
+### [Data Visualization](html_only/Week5_DataViz.html)
+### [Text Processing](html_only/Week6_text_processing.html)
+### [Machine Learning](html_only/Week7_machine_learning.html)
+### [Network Analysis](html_only/Week8_Network_Science.html)
+### [Web Scraping](html_only/Week9_Web Scraping.html)
