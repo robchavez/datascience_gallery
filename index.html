@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>UO Psychology Data Science Gallery</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -41,37 +55,11 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
-</head>
 
-<body>
+
+
 
 <style type = "text/css">
 .main-container {
@@ -79,13 +67,8 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -96,44 +79,59 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
+.dropdown-submenu {
+  position: relative;
 }
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
 }
-
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
 }
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
 }
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
 }
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu.pull-left {
+  float: none;
 }
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -143,27 +141,91 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
-
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -171,7 +233,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -197,7 +259,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -207,19 +269,39 @@ $(document).ready(function () {
 
 
 <div style="text-align:center">
-<img src ="Straub.jpg"..." />
+<img src ="Straub.jpg"/>
 </div>
 <p><br />
-In the Spring of 2018, I taught a PSY 607 seminar called <em>Data Science Methods for Psychology</em>. This course was indented to introduce students to topics, concepts, and workflows that are commonplace in “data science” more generally but are less formally discussed in Psychology. Each week, a pair of students would lead a tutorial session on a given topic before assigning a “mini-hackathon” project for the rest of the class to complete over the coming week. These presentations were consistently excellent, and it would be a shame if I was the only one who got to see them. As such, I thought they might make a useful resource for others in the department (and beyond) who are looking to increase their knowledge of these particular topics or dig in a little deeper with their R skills with relevant information home brewed right here in the UO <a href="https://psychology.uoregon.edu/">Department of Psychology</a> by our peers. Additionally on this page, you will also find the custom R package <a href="psychduck.html">“psychduck”</a> which was collectively created in the class, as well as the course syllabus.</p>
-<p>Below are links to the tutorials created for each topic covered in our course.</p>
+</p>
+<p>In the Spring of 2018, I taught a PSY 607 seminar called <em>Data
+Science Methods for Psychology</em>. This course was indented to
+introduce students to topics, concepts, and workflows that are
+commonplace in “data science” more generally but are less formally
+discussed in Psychology. Each week, a pair of students would lead a
+tutorial session on a given topic before assigning a “mini-hackathon”
+project for the rest of the class to complete over the coming week.
+These presentations were consistently excellent, and it would be a shame
+if I was the only one who got to see them. As such, I thought they might
+make a useful resource for others in the department (and beyond) who are
+looking to increase their knowledge of these particular topics or dig in
+a little deeper with their R skills with relevant information home
+brewed right here in the UO <a
+href="https://psychology.uoregon.edu/">Department of Psychology</a> by
+our peers. Additionally on this page, you will also find the custom R
+package <a href="psychduck.html">“psychduck”</a> which was collectively
+created in the class, as well as the course syllabus.</p>
+<p>Below are links to the tutorials created for each topic covered in
+our course.</p>
 <div id="general-programming-in-r" class="section level3">
-<h3><a href="html_only/general_programming.html">General Programming in R</a></h3>
+<h3><a href="html_only/general_programming.html">General Programming in
+R</a></h3>
 </div>
 <div id="data-wrangling" class="section level3">
 <h3><a href="html_only/data_wrangling.html">Data Wrangling</a></h3>
 </div>
 <div id="data-visualization" class="section level3">
-<h3><a href="html_only/data_visualization.html">Data Visualization</a></h3>
+<h3><a href="html_only/data_visualization.html">Data
+Visualization</a></h3>
 </div>
 <div id="text-processing" class="section level3">
 <h3><a href="html_only/text_processing.html">Text Processing</a></h3>
@@ -228,7 +310,8 @@ In the Spring of 2018, I taught a PSY 607 seminar called <em>Data Science Method
 <h3><a href="html_only/web_scraping.html">Web Scraping</a></h3>
 </div>
 <div id="machine-learning" class="section level3">
-<h3><a href="html_only/machine_learning_basics.html">Machine Learning</a></h3>
+<h3><a href="html_only/machine_learning_basics.html">Machine
+Learning</a></h3>
 </div>
 <div id="network-analysis" class="section level3">
 <h3><a href="html_only/network_analysis.html">Network Analysis</a></h3>
@@ -238,6 +321,44 @@ In the Spring of 2018, I taught a PSY 607 seminar called <em>Data Science Method
 </div>
 <div id="website-building-in-r" class="section level3">
 <h3><a href="html_only/websites.html">Website Building in R</a></h3>
+</div>
+<div id="new-tutorials-for-2026" class="section level2">
+<h2>New tutorials for 2026</h2>
+<p>Below are the tutorials for this course from students in my class
+from Spring of 2026. Many of the same topics with lots of updates to
+keep up with changes over the past eight years. Here is the <a
+href="html_only/PSY607_datascience_syllabus_S26.html">updated
+syllabus</a>.</p>
+<div id="general-programming-in-r-1" class="section level3">
+<h3><a href="html_only/week2_general_programming.html">General
+Programming in R</a></h3>
+</div>
+<div id="custom-functions" class="section level3">
+<h3><a href="html_only/week3_custom_functions.html">Custom
+Functions</a></h3>
+</div>
+<div id="data-wrangling-1" class="section level3">
+<h3><a href="html_only/Week4_datawrangling_GN.html">Data
+Wrangling</a></h3>
+</div>
+<div id="data-visualization-1" class="section level3">
+<h3><a href="html_only/Week5_DataViz.html">Data Visualization</a></h3>
+</div>
+<div id="text-processing-1" class="section level3">
+<h3><a href="html_only/Week6_text_processing.html">Text
+Processing</a></h3>
+</div>
+<div id="machine-learning-1" class="section level3">
+<h3><a href="html_only/Week7_machine_learning.html">Machine
+Learning</a></h3>
+</div>
+<div id="network-analysis-1" class="section level3">
+<h3><a href="html_only/Week8_Network_Science.html">Network
+Analysis</a></h3>
+</div>
+<div id="web-scraping-1" class="section level3">
+<h3><a href="html_only/Week9_Web%20Scraping.html">Web Scraping</a></h3>
+</div>
 </div>
 
 
@@ -249,7 +370,7 @@ In the Spring of 2018, I taught a PSY 607 seminar called <em>Data Science Method
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -257,6 +378,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
