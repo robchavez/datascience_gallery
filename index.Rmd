@@ -17,10 +17,12 @@ Below are links to the tutorials created for each topic covered in our course.
 ### [Package Creation](html_only/packages.html)
 ### [Website Building in R](html_only/websites.html)
 
+<br>
+<br>
 ## New tutorials for 2026
 
 Below are the tutorials for this course from students in my class from Spring of 2026. Many of the same topics with lots of updates to keep up with changes over the past eight years. Here is the [updated syllabus](html_only/PSY607_datascience_syllabus_S26.html).
-
+<br>
 
 ### [General Programming in R](html_only/week2_general_programming.html)
 ### [Custom Functions](html_only/week3_custom_functions.html)
